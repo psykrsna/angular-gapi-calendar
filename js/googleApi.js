@@ -3,7 +3,7 @@ var googleClientId = '175675808666-ha2dpip2b9tn5te8hdnje9vjfqjfdkhi.apps.googleu
 //googleClientId = '175675808666-9a0lm052oeoi8nvmmj3bf8mkcq70hitq.apps.googleusercontent.com';
 var googleApiKey = '3hDN6jNQ277RxlMrrAkqHZAk';
 //googleApiKey = 'jVt_1XJGK020xYPMAskyFRqJ';
-var googleScopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly"];
+var googleScopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/userinfo.email"];
 
 function handleClientLoad()
 {
@@ -44,11 +44,24 @@ function getEvents()
   });
 }
 
+function getEmail(){
+  gapi.client.setApiKey("");
+  gapi.client.load('plus','v1', function(){
+   var request = gapi.client.plus.people.get({
+     'userId': 'me'
+   });
+   request.execute(function(resp) {
+     userEmail = resp.emails[0].value;
+   });
+  });
+}
+
 function handleAuthResult(authResult)
 {
       if (authResult && !authResult.error)
       {
           $('#loginBtn').html('Loading...')
+          getEmail();
           window.location = '/#/calendar';
       }
       else
@@ -69,8 +82,9 @@ function addListEventToGCal(){
     var event = eventData;
 
     var request = gapi.client.calendar.events.insert({
-          'calendarId': 'primary',
-          'resource': event
+          'calendarId': userEmail,
+          'resource': event,
+          'sendNotifications': true
         });
 
     request.execute(function(event) {

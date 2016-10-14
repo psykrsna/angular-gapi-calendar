@@ -18,9 +18,10 @@ angular.module('calendar')
         if($('#eventTitle').val()){ eventData.summary = $('#eventTitle').val(); }
         if($('#eventLocation').val()){ eventData.location = $('#eventLocation').val(); }
         if($('#eventDescription').val()){ eventData.description = $('#eventDescription').val(); }
+        eventData.attendees = [];
+        eventData.attendees.push({email: userEmail});
         if($('#eventAttendees').val()){
             var attendees = $('#eventAttendees').val().split(',');
-            eventData.attendees = [];
             for(attendee of attendees){
                 eventData.attendees.push({email: attendee});
             }
