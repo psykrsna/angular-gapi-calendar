@@ -43,7 +43,6 @@ angular.module('calendar')
             $('#eventStart').val(start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T'));
             $('#eventEnd').val(end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T'));
             $('#eventTitle').focus();
-            debugger
         },
         editable: false,
         timezone: 'local',
