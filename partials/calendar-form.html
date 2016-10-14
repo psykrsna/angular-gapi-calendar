@@ -1,0 +1,23 @@
+
+<form id="event-creation-form" ng-submit="ctrl.createEvent()">
+    <br/>
+    <input type="hidden" id="eventStart" />
+    <input type="hidden" id="eventEnd" />
+    <div class="form-group">
+        <input type="text" class="form-control" id="eventTitle" name="summary" placeholder="Title" />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="eventLocation" name="location" placeholder="Location" />
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" rows="3" id="eventDescription" name="description" placeholder="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="eventAttendees" name="attendees" placeholder="Participant Email(s)" />
+    </div>
+    <div class="form-group">
+        <input class="btn btn-default btn-primary pull-left" type="submit" value="Insert Invite" >
+        <input class="btn btn-default pull-right" type="button" value="Cancel">
+    </div>
+</form>
+<span  id="event-creation-prompt">Select date/time to create event</span>
