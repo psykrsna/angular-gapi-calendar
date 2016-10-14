@@ -14,7 +14,7 @@ $('#event-creation-form').hide();
 $('#event-creation-prompt').show();
 
 this.createEvent = function(){
-    // var eventData = {};
+    $('#eventCreationSubmit').val('Creating Event...');
     if($('#eventTitle').val()){
         eventData.summary = $('#eventTitle').val();
     }
@@ -35,7 +35,22 @@ this.createEvent = function(){
     eventData.end = { dateTime : $('#eventEnd').val() };
     eventData.sendNotifications = true;
 
-    handleEventAuthClick();
+    addEventToGCal();
+
+    var eventD = {
+        title: $('#eventTitle').val(),
+        start: $('#eventStart').val(),
+        end: $('#eventEnd').val()
+    };
+    list_of_events.push(eventD);
+    reloadCalendar();
+}
+
+this.resetEverything = function(){
+    $('#event-creation-form').trigger('reset');
+    reloadCalendar();
+    $('#event-creation-form').hide();
+    $('#event-creation-prompt').show();
 }
 
 

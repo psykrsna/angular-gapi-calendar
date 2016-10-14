@@ -16,8 +16,8 @@
         <input type="text" class="form-control" id="eventAttendees" name="attendees" placeholder="Participant Email(s)" />
     </div>
     <div class="form-group">
-        <input class="btn btn-default btn-primary pull-left" type="submit" value="Insert Invite" >
-        <input class="btn btn-default pull-right" type="button" value="Cancel">
+        <input class="btn btn-default btn-primary pull-left" id="eventCreationSubmit" type="submit" value="Insert Invite" >
+        <input class="btn btn-default pull-right" type="button" value="Cancel" ng-click="ctrl.resetEverything();">
     </div>
 </form>
 <span  id="event-creation-prompt">Select date/time to create event</span>

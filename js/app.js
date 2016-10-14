@@ -26,3 +26,4 @@ app.config(['$routeProvider', function($routeProvider){
 })();
 
 var eventData = {};
+var list_of_events = [];
