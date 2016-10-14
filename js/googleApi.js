@@ -79,6 +79,8 @@ function addListEventToGCal(){
           $('#event-creation-form').trigger('reset');
           $('#eventCreationSubmit').val('Insert Invite');
           eventData = {};
+          $('#event-creation-form').hide();
+          $('#event-creation-prompt').show();
         }
         else{
           alert('Oops, there seems to be some trouble creating this event. Please check your data.');

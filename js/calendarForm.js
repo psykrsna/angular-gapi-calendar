@@ -44,6 +44,7 @@ angular.module('calendar')
         reloadCalendar();
         $('#event-creation-form').hide();
         $('#event-creation-prompt').show();
+        eventData = {};
     }
 
 });
