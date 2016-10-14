@@ -1,3 +1,10 @@
+function saveStartEndOfEvent(start, end){
+    var formatted_start = start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+    var formatted_end = end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+    $('#eventStart').val(formatted_start);
+    $('#eventEnd').val(formatted_end);
+}
+
 function loadCalendar(){
 
     $('#calendar').fullCalendar({
@@ -13,16 +20,12 @@ function loadCalendar(){
         selectHelper: true,
         select: function(start, end) {
             // create event
-            var eventD;
-            var title = 'Event';
-            if (title) {
-                eventD = {
-                    title: title,
+            var eventD = {
+                    title: 'Event',
                     start: start,
                     end: end
                 };
-                $('#calendar').fullCalendar('renderEvent', eventD, true); // stick? = true
-            }
+            $('#calendar').fullCalendar('renderEvent', eventD, true); // stick? = true
             $('#calendar').fullCalendar('unselect');
             // make it editable, and nothing else selectable
             $('#calendar').fullCalendar('option', {
@@ -34,24 +37,14 @@ function loadCalendar(){
             $('#event-creation-prompt').hide();
             $('#eventTitle').focus();
             // store start and end time
-            var formatted_start = start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
-            var formatted_end = end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
-            $('#eventStart').val(formatted_start);
-            $('#eventEnd').val(formatted_end);
-
+            saveStartEndOfEvent(start, end);
         },
         eventResize: function(event, delta, revertFunc){
-            var formatted_start = event.start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
-            var formatted_end = event.end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
-            $('#eventStart').val(formatted_start);
-            $('#eventEnd').val(formatted_end);
+            saveStartEndOfEvent(event.start, event.end);
             $('#eventTitle').focus();
         },
         eventDrop: function(event, delta, revertFunc){
-            var formatted_start = event.start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
-            var formatted_end = event.end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
-            $('#eventStart').val(formatted_start);
-            $('#eventEnd').val(formatted_end);
+            saveStartEndOfEvent(event.start, event.end);
             $('#eventTitle').focus();
         },
         editable: false,
