@@ -40,8 +40,24 @@ angular.module('calendar')
             //$scope.eventBeingCreated = true;
             $('#event-creation-form').show();
             $('#event-creation-prompt').hide();
-            $('#eventStart').val(start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T'));
-            $('#eventEnd').val(end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T'));
+            var formatted_start = start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+            var formatted_end = end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+            $('#eventStart').val(formatted_start);
+            $('#eventEnd').val(formatted_end);
+            $('#eventTitle').focus();
+        },
+        eventResize: function(event, delta, revertFunc){
+            var formatted_start = event.start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+            var formatted_end = event.end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+            $('#eventStart').val(formatted_start);
+            $('#eventEnd').val(formatted_end);
+            $('#eventTitle').focus();
+        },
+        eventDrop: function(event, delta, revertFunc){
+            var formatted_start = event.start.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+            var formatted_end = event.end.format("YYYY-MM-DDTHH:mm:ssZ").replace('A', 'T').replace('P', 'T');
+            $('#eventStart').val(formatted_start);
+            $('#eventEnd').val(formatted_end);
             $('#eventTitle').focus();
         },
         editable: false,

@@ -1,6 +1,8 @@
 
 var googleClientId = '175675808666-ha2dpip2b9tn5te8hdnje9vjfqjfdkhi.apps.googleusercontent.com';
-var googleApiKey = '3hDN6jNQ277RxlMrrAkqHZAk  ';
+//googleClientId = '175675808666-9a0lm052oeoi8nvmmj3bf8mkcq70hitq.apps.googleusercontent.com';
+var googleApiKey = '3hDN6jNQ277RxlMrrAkqHZAk';
+//googleApiKey = 'jVt_1XJGK020xYPMAskyFRqJ';
 var googleScopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly"];
 
 function handleClientLoad()
